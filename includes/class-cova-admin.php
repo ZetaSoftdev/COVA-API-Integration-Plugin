@@ -30,6 +30,7 @@ class Cova_Admin {
         add_action('wp_ajax_cova_process_all_images', array($this, 'ajax_process_all_images'));
         add_action('wp_ajax_cova_reset_processed_images', array($this, 'ajax_reset_processed_images'));
         add_action('wp_ajax_cova_debug_image_process', array($this, 'ajax_debug_image_process'));
+        add_action('wp_ajax_cova_check_image_redirects', array($this, 'ajax_check_image_redirects'));
         add_filter('manage_cova_products_columns', array($this, 'add_product_image_column'));
         add_action('manage_cova_products_custom_column', array($this, 'display_product_image_column'), 10, 2);
     }
@@ -762,6 +763,8 @@ class Cova_Admin {
                 window.cova_admin_nonces.sync_woocommerce = '<?php echo wp_create_nonce('cova_sync_woocommerce_nonce'); ?>';
                 window.cova_admin_nonces.clear_products = '<?php echo wp_create_nonce('cova_clear_products_nonce'); ?>';
                 window.cova_admin_nonces.force_detailed_sync = '<?php echo wp_create_nonce('cova_force_detailed_sync_nonce'); ?>';
+                // Add nonce for category selection modal to the admin page
+                window.cova_admin_nonces.category_selection = '<?php echo wp_create_nonce('cova_category_selection_nonce'); ?>';
             </script>
             
             <div class="cova-products-controls">
@@ -832,6 +835,7 @@ class Cova_Admin {
                                 <th><?php _e('Price', 'cova-integration'); ?></th>
                                 <th><?php _e('Image', 'cova-integration'); ?></th>
                                 <th><?php _e('Image URLs', 'cova-integration'); ?></th>
+                                <th><?php _e('Redirected URLs', 'cova-integration'); ?></th>
                                 <th><?php _e('Available', 'cova-integration'); ?></th>
                                 <th><?php _e('Stock', 'cova-integration'); ?></th>
                             </tr>
@@ -993,6 +997,25 @@ class Cova_Admin {
                                             <span class="na"><?php _e('No URLs', 'cova-integration'); ?></span>
                                         <?php endif; ?>
                                     </td>
+                                    <td class="redirected-urls-column">
+                                        <?php if (!empty($image_urls)) : ?>
+                                            <div class="final-urls-container">
+                                                <?php foreach ($image_urls as $index => $url) : 
+                                                    $label = $index === 0 ? 'Hero' : 'Asset ' . $index;
+                                                    $final_url = $this->get_final_url($url);
+                                                ?>
+                                                    <div class="final-url-item">
+                                                        <span class="url-label"><?php echo esc_html($label); ?>:</span>
+                                                        <a href="<?php echo esc_url($final_url); ?>" target="_blank" class="final-url-link">
+                                                            <?php echo esc_html($final_url); ?>
+                                                        </a>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php else : ?>
+                                            <span class="na"><?php _e('No URLs', 'cova-integration'); ?></span>
+                                        <?php endif; ?>
+                                    </td>
                                     <td>
                                         <?php if ($is_in_stock) : ?>
                                             <span class="dashicons dashicons-yes" style="color: green;"></span>
@@ -1024,6 +1047,7 @@ class Cova_Admin {
                                 <th><?php _e('Price', 'cova-integration'); ?></th>
                                 <th><?php _e('Image', 'cova-integration'); ?></th>
                                 <th><?php _e('Image URLs', 'cova-integration'); ?></th>
+                                <th><?php _e('Redirected URLs', 'cova-integration'); ?></th>
                                 <th><?php _e('Available', 'cova-integration'); ?></th>
                                 <th><?php _e('Stock', 'cova-integration'); ?></th>
                             </tr>
@@ -2417,6 +2441,14 @@ class Cova_Admin {
             COVA_INTEGRATION_VERSION,
             true
         );
+        
+        wp_localize_script('cova-admin-js', 'cova_admin_nonces', array(
+            'process_single' => wp_create_nonce('cova_process_single_nonce'),
+            'process_all' => wp_create_nonce('cova_process_all_nonce'),
+            'reset_processed' => wp_create_nonce('cova_reset_processed_nonce'),
+            'debug_image' => wp_create_nonce('cova_debug_image_nonce'),
+            'check_redirects' => wp_create_nonce('cova_check_redirects_nonce'),
+        ));
     }
     
     /**
@@ -2926,5 +2958,242 @@ class Cova_Admin {
         }
         
         return $errors;
+    }
+    
+    /**
+     * AJAX handler for checking image URL redirects
+     */
+    public function ajax_check_image_redirects() {
+        // Disable error display
+        error_reporting(0);
+        @ini_set('display_errors', 0);
+        
+        // Set JSON headers
+        header('Content-Type: application/json');
+        header('Cache-Control: no-cache, no-store, must-revalidate');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+        
+        // Clear any previous output
+        while (ob_get_level()) {
+            ob_end_clean();
+        }
+        
+        try {
+            // Verify nonce
+            if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'cova_check_redirects_nonce')) {
+                $this->json_output(['success' => false, 'data' => 'Security check failed']);
+                exit;
+            }
+            
+            if (!current_user_can('manage_options')) {
+                $this->json_output(['success' => false, 'data' => 'Insufficient permissions']);
+                exit;
+            }
+            
+            $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
+            $image_urls = isset($_POST['image_urls']) ? json_decode(stripslashes($_POST['image_urls']), true) : [];
+            
+            if (empty($product_id) || empty($image_urls) || !is_array($image_urls)) {
+                $this->json_output(['success' => false, 'data' => 'Missing required parameters']);
+                exit;
+            }
+            
+            error_log('[COVA Redirects] Checking redirects for product: ' . $product_id);
+            
+            $redirect_results = [];
+            
+            foreach ($image_urls as $index => $url) {
+                $label = $index === 0 ? 'Hero' : 'Asset ' . $index;
+                
+                error_log('[COVA Redirects] Checking URL: ' . $url);
+                
+                $final_url = $this->follow_url_redirects($url);
+                
+                $redirect_results[] = [
+                    'label' => $label,
+                    'original_url' => $url,
+                    'final_url' => $final_url,
+                    'is_redirected' => ($url !== $final_url),
+                    'is_igmetrix' => (strpos($url, 'igmetrix.net') !== false),
+                    'final_is_igmetrix' => (strpos($final_url, 'igmetrix.net') !== false)
+                ];
+            }
+            
+            error_log('[COVA Redirects] Results: ' . json_encode($redirect_results));
+            
+            $this->json_output([
+                'success' => true, 
+                'data' => [
+                    'product_id' => $product_id,
+                    'redirects' => $redirect_results
+                ]
+            ]);
+            exit;
+            
+        } catch (Exception $e) {
+            error_log('[COVA Redirects] Exception: ' . $e->getMessage());
+            $this->json_output(['success' => false, 'data' => 'Exception: ' . $e->getMessage()]);
+            exit;
+        }
+    }
+    
+    /**
+     * Follow URL redirects to find the final destination using robust cURL method
+     *
+     * @param string $url The URL to follow
+     * @param int $max_redirects Maximum number of redirects to follow
+     * @return string The final URL after following redirects
+     */
+    private function follow_url_redirects($url, $max_redirects = 10) {
+        error_log('[COVA Redirects] Starting redirect check for: ' . $url);
+        
+        // First try the robust cURL method if available
+        if (function_exists('curl_init')) {
+            $ch = curl_init();
+            
+            // Configure cURL for following redirects
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Follow redirects automatically
+            curl_setopt($ch, CURLOPT_MAXREDIRS, $max_redirects); // Max redirects to follow
+            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_NOBODY, true); // HEAD request only (no body content)
+            
+            // Set proper headers to avoid being blocked
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language: en-US,en;q=0.5',
+                'Accept-Encoding: gzip, deflate',
+                'Connection: keep-alive',
+                'Upgrade-Insecure-Requests: 1',
+            ));
+            
+            // Execute the request
+            $result = curl_exec($ch);
+            
+            if ($result !== false) {
+                // Get the effective URL (final URL after all redirects)
+                $final_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+                $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                $redirect_count = curl_getinfo($ch, CURLINFO_REDIRECT_COUNT);
+                
+                error_log('[COVA Redirects] cURL result - Final URL: ' . $final_url . ', HTTP Code: ' . $http_code . ', Redirect Count: ' . $redirect_count);
+                
+                curl_close($ch);
+                
+                // Return the final URL if we got a valid response
+                if (!empty($final_url) && $http_code < 400) {
+                    return $final_url;
+                }
+            } else {
+                $curl_error = curl_error($ch);
+                error_log('[COVA Redirects] cURL error: ' . $curl_error);
+                curl_close($ch);
+            }
+        }
+        
+        // Fallback to WordPress HTTP API method if cURL fails
+        error_log('[COVA Redirects] Falling back to WordPress HTTP API method');
+        
+        $redirect_count = 0;
+        $current_url = $url;
+        
+        while ($redirect_count < $max_redirects) {
+            // Use WordPress HTTP API to get headers only
+            $response = wp_remote_head($current_url, [
+                'timeout' => 30,
+                'redirection' => 0, // Don't follow redirects automatically
+                'sslverify' => false,
+                'headers' => [
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+                ]
+            ]);
+            
+            if (is_wp_error($response)) {
+                error_log('[COVA Redirects] WordPress HTTP API error: ' . $response->get_error_message());
+                break;
+            }
+            
+            $status_code = wp_remote_retrieve_response_code($response);
+            error_log('[COVA Redirects] URL: ' . $current_url . ' - Status: ' . $status_code);
+            
+            // Check if it's a redirect status code
+            if (in_array($status_code, [301, 302, 303, 307, 308])) {
+                $location = wp_remote_retrieve_header($response, 'location');
+                
+                if ($location) {
+                    // Handle relative URLs
+                    if (strpos($location, 'http') !== 0) {
+                        $parsed_url = parse_url($current_url);
+                        if ($location[0] === '/') {
+                            // Absolute path
+                            $location = $parsed_url['scheme'] . '://' . $parsed_url['host'] . $location;
+                        } else {
+                            // Relative path
+                            $location = $parsed_url['scheme'] . '://' . $parsed_url['host'] . dirname($parsed_url['path']) . '/' . $location;
+                        }
+                    }
+                    
+                    error_log('[COVA Redirects] Redirected to: ' . $location);
+                    $current_url = $location;
+                    $redirect_count++;
+                } else {
+                    // No location header, stop following
+                    break;
+                }
+            } else {
+                // Not a redirect, we've reached the final URL
+                break;
+            }
+        }
+        
+        if ($redirect_count >= $max_redirects) {
+            error_log('[COVA Redirects] Max redirects reached for: ' . $url);
+        }
+        
+        return $current_url;
+    }
+
+    /**
+     * Get the final URL after following all redirects using simple cURL approach
+     *
+     * @param string $url The initial URL to check
+     * @return string|false The final URL, or false on failure
+     */
+    private function get_final_url($url) {
+        if (empty($url) || !function_exists('curl_init')) {
+            return $url; // Return original URL if cURL not available
+        }
+        
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HEADER, true); // We want headers
+        curl_setopt($ch, CURLOPT_NOBODY, true); // We don't need body
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10); // Limit redirects for safety
+        curl_setopt($ch, CURLOPT_TIMEOUT, 15); // Timeout after 15 seconds
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        
+        // Set proper headers
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+        ));
+        
+        curl_exec($ch);
+
+        if (!curl_errno($ch)) {
+            $final_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+            curl_close($ch);
+            return $final_url;
+        } else {
+            curl_close($ch);
+            return $url; // Return original URL on error
+        }
     }
 } 

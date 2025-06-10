@@ -306,4 +306,47 @@
 /* Adjust table layout for new column */
 .wp-list-table .image-urls-column {
     vertical-align: top;
+}
+
+/* Redirected URLs column styles */
+.redirected-urls-column {
+    width: 250px;
+    max-width: 250px;
+    vertical-align: top;
+}
+
+.final-urls-container {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.final-url-item {
+    margin: 3px 0;
+    padding: 3px;
+    font-size: 11px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.final-url-item:last-child {
+    border-bottom: none;
+}
+
+.url-label {
+    font-weight: bold;
+    color: #2271b1;
+    font-size: 10px;
+}
+
+.final-url-link {
+    color: #0073aa;
+    text-decoration: none;
+    word-break: break-all;
+    display: block;
+    margin-top: 2px;
+}
+
+.final-url-link:hover {
+    text-decoration: underline;
+    color: #005177;
 } 

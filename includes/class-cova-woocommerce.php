@@ -22,6 +22,7 @@ class Cova_WooCommerce {
         add_action('cova_integration_sync_event', array($this, 'sync_products_with_woocommerce'));
         add_action('wp_ajax_cova_sync_products_with_woocommerce', array($this, 'ajax_sync_products_with_woocommerce'));
         add_action('wp_ajax_cova_clear_woocommerce_products', array($this, 'ajax_clear_woocommerce_products'));
+        add_action('wp_ajax_cova_get_category_selection_modal', array($this, 'ajax_get_category_selection_modal'));
         
         // Add settings
         add_action('admin_init', array($this, 'register_settings'));
@@ -262,15 +263,19 @@ class Cova_WooCommerce {
             return;
         }
         
+        // Get current tab
+        $current_tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : 'settings';
+        
         ?>
         <div class="wrap">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
             
             <h2 class="nav-tab-wrapper">
-                <a href="?page=cova-integration-woocommerce" class="nav-tab nav-tab-active"><?php _e('Sync Settings', 'cova-integration'); ?></a>
-                <a href="?page=cova-integration-woocommerce&tab=mapping" class="nav-tab"><?php _e('Category Mapping', 'cova-integration'); ?></a>
-                <a href="?page=cova-integration-woocommerce&tab=log" class="nav-tab"><?php _e('Sync Log', 'cova-integration'); ?></a>
+                <a href="?page=cova-integration-woocommerce&tab=settings" class="nav-tab <?php echo $current_tab === 'settings' ? 'nav-tab-active' : ''; ?>"><?php _e('Sync Settings', 'cova-integration'); ?></a>
+                <a href="?page=cova-integration-woocommerce&tab=mapping" class="nav-tab <?php echo $current_tab === 'mapping' ? 'nav-tab-active' : ''; ?>"><?php _e('Category Mapping', 'cova-integration'); ?></a>
             </h2>
+            
+            <?php if ($current_tab === 'settings' || $current_tab === '') : ?>
             
             <div class="cova-sync-status">
                 <h3><?php _e('Synchronization Status', 'cova-integration'); ?></h3>
@@ -306,10 +311,31 @@ class Cova_WooCommerce {
             <form action="options.php" method="post">
                 <?php
                 settings_fields('cova_integration_woocommerce_settings');
-                do_settings_sections('cova_integration_woocommerce_settings');
+                
+                // Only show settings except category mapping on the settings tab
+                $this->display_woocommerce_settings_without_mapping();
+                
                 submit_button();
                 ?>
             </form>
+            
+            <?php elseif ($current_tab === 'mapping') : ?>
+            
+            <form action="options.php" method="post">
+                <?php
+                settings_fields('cova_integration_woocommerce_settings');
+                ?>
+                
+                <h3><?php _e('Category Mapping', 'cova-integration'); ?></h3>
+                <p class="description"><?php _e('Map Cova product categories to WooCommerce categories.', 'cova-integration'); ?></p>
+                
+                <?php $this->wc_category_mapping_render(); ?>
+                
+                <?php submit_button(); ?>
+            </form>
+            
+            <?php endif; ?>
+            
         </div>
         
         <script type="text/javascript">
@@ -389,6 +415,46 @@ class Cova_WooCommerce {
     }
     
     /**
+     * Display WooCommerce settings without category mapping
+     */
+    private function display_woocommerce_settings_without_mapping() {
+        ?>
+        <table class="form-table">
+            <tr>
+                <th scope="row"><?php _e('Enable WooCommerce Sync', 'cova-integration'); ?></th>
+                <td>
+                    <?php $this->wc_sync_enabled_render(); ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><?php _e('Auto Publish Products', 'cova-integration'); ?></th>
+                <td>
+                    <?php $this->wc_auto_publish_render(); ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><?php _e('Import Product Images', 'cova-integration'); ?></th>
+                <td>
+                    <?php $this->wc_import_images_render(); ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><?php _e('Clear Products Before Sync', 'cova-integration'); ?></th>
+                <td>
+                    <?php $this->wc_clear_before_sync_render(); ?>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><?php _e('Default WooCommerce Category', 'cova-integration'); ?></th>
+                <td>
+                    <?php $this->wc_default_category_render(); ?>
+                </td>
+            </tr>
+        </table>
+        <?php
+    }
+    
+    /**
      * AJAX handler for syncing products with WooCommerce
      */
     public function ajax_sync_products_with_woocommerce() {
@@ -402,7 +468,11 @@ class Cova_WooCommerce {
             $product_ids = is_array($_POST['product_ids']) ? 
                 array_map('sanitize_text_field', $_POST['product_ids']) : 
                 [sanitize_text_field($_POST['product_ids'])];
-            $result = $this->sync_selected_products($product_ids, $last_error);
+            
+            // Check if category is being explicitly set for this product
+            $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
+            
+            $result = $this->sync_selected_products($product_ids, $last_error, $category_id);
             if ($result) {
                 wp_send_json_success();
             } else {
@@ -418,6 +488,77 @@ class Cova_WooCommerce {
                 wp_send_json_success();
             }
         }
+    }
+    
+    /**
+     * AJAX handler for getting product category selection modal
+     */
+    public function ajax_get_category_selection_modal() {
+        check_ajax_referer('cova_category_selection_nonce', 'nonce');
+        
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(__('Insufficient permissions', 'cova-integration'));
+            return;
+        }
+        
+        $product_id = isset($_POST['product_id']) ? sanitize_text_field($_POST['product_id']) : '';
+        
+        if (empty($product_id)) {
+            wp_send_json_error(__('Product ID is required', 'cova-integration'));
+            return;
+        }
+        
+        // Get product info
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'cova_products';
+        $product = $wpdb->get_row($wpdb->prepare(
+            "SELECT * FROM $table_name WHERE product_id = %s",
+            $product_id
+        ), ARRAY_A);
+        
+        if (!$product) {
+            wp_send_json_error(__('Product not found', 'cova-integration'));
+            return;
+        }
+        
+        // Get the WooCommerce categories
+        $categories = get_terms(array(
+            'taxonomy' => 'product_cat',
+            'hide_empty' => false,
+        ));
+        
+        ob_start();
+        ?>
+        <div class="cova-category-selection-modal">
+            <h3><?php echo sprintf(__('Select Category for "%s"', 'cova-integration'), esc_html($product['name'])); ?></h3>
+            
+            <p><strong><?php _e('Product Category:', 'cova-integration'); ?></strong> <?php echo esc_html($product['category']); ?></p>
+            
+            <p><?php _e('Select a WooCommerce category for this product:', 'cova-integration'); ?></p>
+            
+            <select id="cova-product-category-select">
+                <option value=""><?php _e('-- Use Default Category --', 'cova-integration'); ?></option>
+                <?php foreach ($categories as $category) : ?>
+                <option value="<?php echo esc_attr($category->term_id); ?>"><?php echo esc_html($category->name); ?></option>
+                <?php endforeach; ?>
+            </select>
+            
+            <div class="cova-modal-actions">
+                <button id="cova-sync-with-category" class="button button-primary" data-product-id="<?php echo esc_attr($product_id); ?>">
+                    <?php _e('Sync Product', 'cova-integration'); ?>
+                </button>
+                <button id="cova-cancel-category-selection" class="button">
+                    <?php _e('Cancel', 'cova-integration'); ?>
+                </button>
+            </div>
+        </div>
+        <?php
+        
+        $html = ob_get_clean();
+        
+        wp_send_json_success(array(
+            'html' => $html
+        ));
     }
     
     /**
@@ -810,37 +951,55 @@ class Cova_WooCommerce {
         
         $gallery_ids = array();
         $featured_set = false;
+        
         // 1. Set HeroShotUri as featured image if available
         if (!empty($hero_shot_uri)) {
-            $existing = $this->get_attachment_id_by_url($hero_shot_uri);
-            if ($existing) {
-                set_post_thumbnail($product_id, $existing);
-                $featured_set = true;
+            // Skip igmetrix URLs which are known to return 500 errors
+            if (strpos($hero_shot_uri, 'igmetrix.net') !== false) {
+                error_log('[COVA WooCommerce] Skipping igmetrix.net hero image URL (known to return 500 errors): ' . $hero_shot_uri);
             } else {
-                // Use our custom function to handle redirects
-                $temp_file = $this->download_image_with_redirect($hero_shot_uri);
-                if ($temp_file && !is_wp_error($temp_file)) {
-                    $file_array = array(
-                        'name' => basename($hero_shot_uri),
-                        'tmp_name' => $temp_file
-                    );
-                    
-                    $attachment_id = media_handle_sideload($file_array, $product_id, $product_name);
-                    if (!is_wp_error($attachment_id)) {
-                        update_post_meta($attachment_id, '_cova_heroshot_uri', $hero_shot_uri);
-                        set_post_thumbnail($product_id, $attachment_id);
-                        $featured_set = true;
-                    } else {
-                        error_log("[COVA Sync] Failed to sideload HeroShotUri image: $hero_shot_uri | Error: " . $attachment_id->get_error_message());
-                        // Clean up temp file
-                        @unlink($temp_file);
-                    }
+                $hero_final_url = $this->get_final_url($hero_shot_uri);
+                
+                // Check if already attached by original or final URL
+                $existing = $this->get_attachment_id_by_url($hero_shot_uri);
+                if (!$existing) {
+                    $existing = $this->get_attachment_id_by_url($hero_final_url);
+                }
+                
+                if ($existing) {
+                    set_post_thumbnail($product_id, $existing);
+                    $featured_set = true;
+                    error_log('[COVA WooCommerce] Using existing hero image (ID: ' . $existing . ') for: ' . $hero_final_url);
                 } else {
-                    $error_message = is_wp_error($temp_file) ? $temp_file->get_error_message() : "Failed to download image";
-                    error_log("[COVA Sync] Failed to download HeroShotUri image: $hero_shot_uri | Error: " . $error_message);
+                    // Download from final URL
+                    $temp_file = $this->download_image_with_redirect($hero_shot_uri);
+                    if ($temp_file && !is_wp_error($temp_file)) {
+                        $file_array = array(
+                            'name' => basename($hero_final_url),
+                            'tmp_name' => $temp_file
+                        );
+                        
+                        $attachment_id = media_handle_sideload($file_array, $product_id, $product_name);
+                        if (!is_wp_error($attachment_id)) {
+                            // Store both original and final URLs for tracking
+                            update_post_meta($attachment_id, '_cova_original_url', $hero_shot_uri);
+                            update_post_meta($attachment_id, '_cova_final_url', $hero_final_url);
+                            update_post_meta($attachment_id, '_cova_heroshot_uri', $hero_shot_uri);
+                            set_post_thumbnail($product_id, $attachment_id);
+                            $featured_set = true;
+                            error_log('[COVA WooCommerce] Successfully imported hero image (ID: ' . $attachment_id . ') from: ' . $hero_final_url);
+                        } else {
+                            error_log("[COVA WooCommerce] Failed to sideload HeroShotUri image: $hero_shot_uri | Final URL: $hero_final_url | Error: " . $attachment_id->get_error_message());
+                            @unlink($temp_file);
+                        }
+                    } else {
+                        $error_message = is_wp_error($temp_file) ? $temp_file->get_error_message() : "Failed to download image";
+                        error_log("[COVA WooCommerce] Failed to download HeroShotUri image: $hero_shot_uri | Final URL: $hero_final_url | Error: " . $error_message);
+                    }
                 }
             }
         }
+        
         // 2. Process Assets array
         foreach ($assets as $i => $asset) {
             $asset_id = $asset['AssetId'] ?? $asset['Id'] ?? null;
@@ -850,10 +1009,12 @@ class Cova_WooCommerce {
             $ext = $asset['FileExtension'] ?? 'jpg';
             $width = 1200;
             $height = 1200;
+            
             if (!$asset_id && !$uri) {
-                error_log("[COVA Sync] Missing AssetId and Uri in asset: " . print_r($asset, true));
+                error_log("[COVA WooCommerce] Missing AssetId and Uri in asset: " . print_r($asset, true));
                 continue;
             }
+            
             // Prefer Uri if available
             $image_url = null;
             if (!empty($uri)) {
@@ -869,9 +1030,24 @@ class Cova_WooCommerce {
             } elseif ($asset_id) {
                 $image_url = "https://amsprod.blob.core.windows.net/assets/{$asset_id}_{$width}_{$height}.{$ext}";
             }
+            
             if (!$image_url) continue;
-            // Check if already attached by URL
+            
+            // Skip igmetrix URLs which are known to return 500 errors
+            if (strpos($image_url, 'igmetrix.net') !== false) {
+                error_log('[COVA WooCommerce] Skipping igmetrix.net asset URL (known to return 500 errors): ' . $image_url);
+                continue;
+            }
+            
+            // Get final URL
+            $final_url = $this->get_final_url($image_url);
+            
+            // Check if already attached by original or final URL
             $existing = $this->get_attachment_id_by_url($image_url);
+            if (!$existing) {
+                $existing = $this->get_attachment_id_by_url($final_url);
+            }
+            
             if ($existing) {
                 if (!$featured_set) {
                     set_post_thumbnail($product_id, $existing);
@@ -879,39 +1055,45 @@ class Cova_WooCommerce {
                 } else {
                     $gallery_ids[] = $existing;
                 }
+                error_log('[COVA WooCommerce] Using existing asset image (ID: ' . $existing . ') for: ' . $final_url);
                 continue;
             }
             
-            // Use our custom function to handle redirects
+            // Download from final URL
             $temp_file = $this->download_image_with_redirect($image_url);
             if ($temp_file && !is_wp_error($temp_file)) {
                 $file_array = array(
-                    'name' => basename($image_url),
+                    'name' => basename($final_url),
                     'tmp_name' => $temp_file
                 );
                 
                 $attachment_id = media_handle_sideload($file_array, $product_id, $alt);
                 if (!is_wp_error($attachment_id)) {
+                    // Store both original and final URLs for tracking
+                    update_post_meta($attachment_id, '_cova_original_url', $image_url);
+                    update_post_meta($attachment_id, '_cova_final_url', $final_url);
                     update_post_meta($attachment_id, '_cova_asset_id', $asset_id);
-                    update_post_meta($attachment_id, '_cova_asset_url', $image_url);
+                    update_post_meta($attachment_id, '_cova_asset_url', $image_url); // Keep for backward compatibility
+                    
                     if (!$featured_set) {
                         set_post_thumbnail($product_id, $attachment_id);
                         $featured_set = true;
                     } else {
                         $gallery_ids[] = $attachment_id;
                     }
+                    error_log('[COVA WooCommerce] Successfully imported asset image (ID: ' . $attachment_id . ') from: ' . $final_url);
                 } else {
-                    error_log("[COVA Sync] Failed to sideload image: $image_url | Error: " . $attachment_id->get_error_message());
-                    $this->log_error("[COVA Sync] Failed to sideload image: $image_url | Error: " . $attachment_id->get_error_message());
-                    // Clean up temp file
+                    error_log("[COVA WooCommerce] Failed to sideload image: $image_url | Final URL: $final_url | Error: " . $attachment_id->get_error_message());
+                    $this->log_error("[COVA WooCommerce] Failed to sideload image: $image_url | Final URL: $final_url | Error: " . $attachment_id->get_error_message());
                     @unlink($temp_file);
                 }
             } else {
                 $error_message = is_wp_error($temp_file) ? $temp_file->get_error_message() : "Failed to download image";
-                error_log("[COVA Sync] Failed to download image: $image_url | Error: " . $error_message);
-                $this->log_error("[COVA Sync] Failed to download image: $image_url | Error: " . $error_message);
+                error_log("[COVA WooCommerce] Failed to download image: $image_url | Final URL: $final_url | Error: " . $error_message);
+                $this->log_error("[COVA WooCommerce] Failed to download image: $image_url | Final URL: $final_url | Error: " . $error_message);
             }
         }
+        
         // Set gallery images
         if (!empty($gallery_ids)) {
             $gallery_ids_str = implode(',', $gallery_ids);
@@ -920,55 +1102,124 @@ class Cova_WooCommerce {
     }
     
     /**
+     * Get the final URL after following all redirects using simple cURL approach
+     *
+     * @param string $url The initial URL to check
+     * @return string The final URL, or original URL on failure
+     */
+    private function get_final_url($url) {
+        if (empty($url) || !function_exists('curl_init')) {
+            return $url; // Return original URL if cURL not available
+        }
+        
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_HEADER, true); // We want headers
+        curl_setopt($ch, CURLOPT_NOBODY, true); // We don't need body
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10); // Limit redirects for safety
+        curl_setopt($ch, CURLOPT_TIMEOUT, 15); // Timeout after 15 seconds
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        
+        // Set proper headers
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+        ));
+        
+        curl_exec($ch);
+
+        if (!curl_errno($ch)) {
+            $final_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+            curl_close($ch);
+            return $final_url;
+        } else {
+            curl_close($ch);
+            return $url; // Return original URL on error
+        }
+    }
+
+    /**
      * Download image with support for HTTP redirects
      *
      * @param string $url Image URL
      * @return string|WP_Error Path to downloaded temp file or WP_Error on failure
      */
     private function download_image_with_redirect($url) {
-        // Use WordPress HTTP API which handles redirects
-        $response = wp_remote_get($url, array(
+        // First, get the final URL after following all redirects
+        $final_url = $this->get_final_url($url);
+        
+        error_log('[COVA WooCommerce] Downloading image - Original: ' . $url . ' | Final: ' . $final_url);
+        
+        // Use WordPress HTTP API to download from the final URL
+        $response = wp_remote_get($final_url, array(
             'timeout' => 30,
-            'redirection' => 5, // Follow up to 5 redirects
-            'sslverify' => false, // Might need to be true in production
+            'redirection' => 0, // Don't follow redirects since we already have the final URL
+            'sslverify' => false,
+            'headers' => array(
+                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+            )
         ));
         
         if (is_wp_error($response)) {
+            error_log('[COVA WooCommerce] Failed to download image: ' . $response->get_error_message());
             return $response;
         }
         
-        if (wp_remote_retrieve_response_code($response) !== 200) {
-            return new WP_Error('download_failed', 'Failed to download image. HTTP status: ' . wp_remote_retrieve_response_code($response));
+        $status_code = wp_remote_retrieve_response_code($response);
+        if ($status_code !== 200) {
+            error_log('[COVA WooCommerce] Bad HTTP status: ' . $status_code . ' for URL: ' . $final_url);
+            return new WP_Error('download_failed', 'Failed to download image. HTTP status: ' . $status_code);
         }
         
         $image_data = wp_remote_retrieve_body($response);
         if (empty($image_data)) {
+            error_log('[COVA WooCommerce] Empty image data for URL: ' . $final_url);
             return new WP_Error('empty_image', 'Downloaded image is empty');
         }
         
-        $wp_upload_dir = wp_upload_dir();
-        $temp_file = wp_tempnam($url);
+        $temp_file = wp_tempnam($final_url);
         
         // Save the image data to a temporary file
         if (!file_put_contents($temp_file, $image_data)) {
+            error_log('[COVA WooCommerce] Failed to save temp file for URL: ' . $final_url);
             return new WP_Error('file_save_failed', 'Could not write image to temporary file');
         }
         
+        error_log('[COVA WooCommerce] Successfully downloaded image to: ' . $temp_file);
         return $temp_file;
     }
     
     /**
-     * Get attachment ID by image URL
+     * Get attachment ID by image URL (checks multiple URL metadata keys)
      *
      * @param string $url Image URL
      * @return int|null Attachment ID or null if not found
      */
     private function get_attachment_id_by_url($url) {
         global $wpdb;
-        $attachment = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_cova_asset_url' AND meta_value = %s LIMIT 1", $url));
-        if (!empty($attachment)) {
-            return $attachment[0];
+        
+        // Check multiple meta keys to find existing attachments
+        $meta_keys = array(
+            '_cova_final_url',      // New final URL key (highest priority)
+            '_cova_original_url',   // New original URL key  
+            '_cova_asset_url',      // Legacy key for backward compatibility
+            '_cova_heroshot_uri'    // Hero shot URI key
+        );
+        
+        foreach ($meta_keys as $meta_key) {
+            $attachment = $wpdb->get_col($wpdb->prepare(
+                "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = %s AND meta_value = %s LIMIT 1", 
+                $meta_key, 
+                $url
+            ));
+            
+            if (!empty($attachment)) {
+                error_log('[COVA WooCommerce] Found existing attachment ID: ' . $attachment[0] . ' for URL: ' . $url . ' (meta key: ' . $meta_key . ')');
+                return $attachment[0];
+            }
         }
+        
         return null;
     }
     
@@ -997,9 +1248,11 @@ class Cova_WooCommerce {
      * Sync selected products to WooCommerce
      *
      * @param array $product_ids Array of Cova product IDs to sync
+     * @param string &$last_error Reference to store the last error message
+     * @param int $specific_category_id Optional specific category ID to use
      * @return bool True on success, false on failure
      */
-    public function sync_selected_products($product_ids, &$last_error = null) {
+    public function sync_selected_products($product_ids, &$last_error = null, $specific_category_id = 0) {
         global $wpdb;
         if (!class_exists('WooCommerce')) {
             $this->log_error('WooCommerce is not installed or activated.');
@@ -1014,7 +1267,7 @@ class Cova_WooCommerce {
         // Get settings
         $auto_publish = get_option('cova_integration_wc_auto_publish', false);
         $import_images = get_option('cova_integration_wc_import_images', true);
-        $default_category = get_option('cova_integration_wc_default_category', '');
+        $default_category = $specific_category_id > 0 ? $specific_category_id : get_option('cova_integration_wc_default_category', '');
         $category_mapping = get_option('cova_integration_wc_category_mapping', array());
         $success_count = 0;
         $updated_count = 0;

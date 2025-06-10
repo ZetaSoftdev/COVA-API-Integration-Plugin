@@ -361,27 +361,127 @@
                 $('input[name="product_ids[]"]').prop('checked', $(this).prop('checked'));
             });
             
-            // Handle individual sync links
-            $('.sync-single-product').click(function() {
-                const productId = $(this).data('product-id');
-                if (confirm('Are you sure you want to sync this product with WooCommerce?')) {
-                    // Show loading feedback
-                    $(this).text('Syncing...').addClass('disabled');
-                    // Use direct AJAX call for better feedback
-                    $.ajax({
-                        url: ajaxurl,
-                        type: 'POST',
-                        data: {
-                            action: 'cova_sync_products_with_woocommerce',
-                            nonce: window.cova_admin_nonces?.sync_woocommerce || '',
-                            product_ids: [productId]
-                        },
-                        complete: function() {
-                            // Force reload after any result (success or error)
-                            window.location.reload(true);
-                        }
-                    });
+            // Add modal container to the page if it doesn't exist
+            if (!$('#cova-category-modal').length) {
+                $('body').append('<div id="cova-category-modal" class="cova-modal" style="display:none;"><div class="cova-modal-content"></div></div>');
+            }
+            
+            // Modal CSS
+            var modalCss = `
+                .cova-modal {
+                    display: none;
+                    position: fixed;
+                    z-index: 999999;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0,0,0,0.4);
                 }
+                .cova-modal-content {
+                    background-color: #fefefe;
+                    margin: 10% auto;
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                    width: 50%;
+                    max-width: 500px;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                }
+                .cova-category-selection-modal h3 {
+                    margin-top: 0;
+                }
+                .cova-modal-actions {
+                    margin-top: 20px;
+                    text-align: right;
+                }
+                .cova-modal-actions button {
+                    margin-left: 10px;
+                }
+                #cova-product-category-select {
+                    width: 100%;
+                    margin: 10px 0;
+                }
+            `;
+            
+            // Add the CSS to the page
+            $('<style>').text(modalCss).appendTo('head');
+            
+            // Close modal when clicking outside of it
+            $(document).on('click', function(e) {
+                if ($(e.target).is('#cova-category-modal')) {
+                    $('#cova-category-modal').hide();
+                }
+            });
+            
+            // Handle individual sync links - show category selection modal
+            $(document).on('click', '.sync-single-product', function(e) {
+                e.preventDefault();
+                const productId = $(this).data('product-id');
+                const $button = $(this);
+                
+                // Show loading state
+                $button.text('Loading...').addClass('disabled');
+                
+                // Get the category selection modal
+                $.ajax({
+                    url: ajaxurl,
+                    type: 'POST',
+                    data: {
+                        action: 'cova_get_category_selection_modal',
+                        product_id: productId,
+                        nonce: window.cova_admin_nonces?.category_selection || ''
+                    },
+                    success: function(response) {
+                        // Reset button state
+                        $button.text('Sync to WooCommerce').removeClass('disabled');
+                        
+                        if (response.success) {
+                            // Show the modal with the category selection
+                            $('#cova-category-modal .cova-modal-content').html(response.data.html);
+                            $('#cova-category-modal').show();
+                            
+                            // Handle sync button click
+                            $('#cova-sync-with-category').on('click', function() {
+                                const selectedCategoryId = $('#cova-product-category-select').val();
+                                
+                                // Show loading state
+                                $(this).text('Syncing...').prop('disabled', true);
+                                
+                                // Sync product with selected category
+                                $.ajax({
+                                    url: ajaxurl,
+                                    type: 'POST',
+                                    data: {
+                                        action: 'cova_sync_products_with_woocommerce',
+                                        nonce: window.cova_admin_nonces?.sync_woocommerce || '',
+                                        product_ids: [productId],
+                                        category_id: selectedCategoryId
+                                    },
+                                    complete: function() {
+                                        // Hide modal and reload page
+                                        $('#cova-category-modal').hide();
+                                        window.location.reload(true);
+                                    }
+                                });
+                            });
+                            
+                            // Handle cancel button click
+                            $('#cova-cancel-category-selection').on('click', function() {
+                                $('#cova-category-modal').hide();
+                            });
+                        } else {
+                            // Show error
+                            alert('Error: ' + (response.data || 'Could not load category selection'));
+                        }
+                    },
+                    error: function() {
+                        // Reset button state and show error
+                        $button.text('Sync to WooCommerce').removeClass('disabled');
+                        alert('Error: Could not communicate with the server');
+                    }
+                });
             });
             
             // Clear all products
@@ -508,6 +608,14 @@
                 fallbackCopyTextToClipboard(url, $button, originalText);
             }
         });
+        
+        // Helper function to truncate URLs
+        function truncateUrl(url, maxLength) {
+            if (url.length <= maxLength) {
+                return url;
+            }
+            return url.substring(0, maxLength) + '...';
+        }
         
         // Fallback copy function for older browsers
         function fallbackCopyTextToClipboard(text, $button, originalText) {
