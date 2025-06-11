@@ -1,0 +1,1869 @@
+{
+  "Products": [
+    {
+      "ProductId": "a5ecd3e1-f9c2-4544-bfbb-86cda3316821",
+      "MasterProductId": 4705822,
+      "MasterProductName": "Qwest - Escape Qwest",
+      "VariationId": 1,
+      "Slug": "M4705822-V1",
+      "CatalogSku": "TFMHJAUL",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Escape Qwest - Death Bubba - Indica 1G",
+      "ShortDescription": "Robust and full-bodied musky aroma with earthy terpenes.",
+      "LongDescription": "Qwests Escape Qwest (Death Bubba) is cultivated using the mineral rich soils and streams of the Pacific Northwest. A heavy indica, Death Bubba presents a robust flower structure, which yields earthy terpenes of wood and pine. With bright pistils and bulbous trichomes, Death Bubba has a familiar musk reminiscent of other BC-grown favourites.",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000017",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900003",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Indica",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Caryophyllene, Limonene, Pinene",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Indica",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Escape Qwest - Death Bubba - Indica 1G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "a5ecd3e1-f9c2-4544-bfbb-86cda3316821",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:31.18Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:29.3066935Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:33.559628Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "e5e4f7bb-c292-4906-aa59-5750ae553813",
+      "MasterProductId": 4705825,
+      "MasterProductName": "Qwest Reserve - Wedding Breath",
+      "VariationId": 1,
+      "Slug": "M4705825-V1",
+      "CatalogSku": "6T16XA8D",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest Reserve - Wedding Breath -  Indica 1G",
+      "ShortDescription": "Creamy taste with subtle spice flavours.",
+      "LongDescription": "Spirit Qwest (Wedding Breath, a cross between Wedding Cake and Mendo Breath) is a rare indica-dominant strain with a grape profile and a flower structure akin to the renowned Purple Haze. Qwest cannabis is small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust flowers).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000090",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900089",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Indica",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST RESERVE",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Pinene, Humulene, Beta_Caryophyllene",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Indica",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST RESERVE",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest Reserve - Wedding Breath -  Indica 1G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "e5e4f7bb-c292-4906-aa59-5750ae553813",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:43.57Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:29.5566649Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:29.6926195Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "5542ae8b-4764-4f1c-98a7-a0310094f77b",
+      "MasterProductId": 4705826,
+      "MasterProductName": "Qwest - Zest Qwest",
+      "VariationId": 1,
+      "Slug": "M4705826-V1",
+      "CatalogSku": "0QDYP8CX",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Zest Qwest - Super Lemon Haze - Sativa 1G",
+      "ShortDescription": "Aromatic zesty citrus and subtly sweet flavours.",
+      "LongDescription": "Sativa-dominant Super Lemon Haze strain (Zest Qwest), combining favoured genetics from popular parent strains Lemon Skunk and Super Silver Haze, Super Lemon Haze has a frosty layer of kief bearing a blonde tint. Naturally lanky flowers feature signature aromatics of zesty citrus. Qwest cannabis is small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust buds).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000074",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900065",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Terpinolene, ,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Zest Qwest - Super Lemon Haze - Sativa 1G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "5542ae8b-4764-4f1c-98a7-a0310094f77b",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:30.6733333Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:29.6035063Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:37.5852139Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "74d7d794-8d8d-46d6-a145-42720b003f0a",
+      "MasterProductId": 4705823,
+      "MasterProductName": "Qwest - Wonder Qwest",
+      "VariationId": 1,
+      "Slug": "M4705823-V1",
+      "CatalogSku": "0C45DGFU",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Wonder Qwest - Sour Diesel - Sativa 1G",
+      "ShortDescription": "Hint of pine, and sweet and sour undertones.",
+      "LongDescription": "Wonder Qwest (Sour Diesel) has a rare flavour profile that matches its name. Fluffy with resinous white-hued sugar leaves, this Chemdawg91 and SuperSkunk cross is truly sour with sweet hints of citrus. Pungent and tart, this is a hearty phenotype that is small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust flowers).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000033",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900027",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Myrcene, Limonene,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Wonder Qwest - Sour Diesel - Sativa 1G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "74d7d794-8d8d-46d6-a145-42720b003f0a",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:31.4833333Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:30.3691542Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:28.2369639Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "6cb64663-4a1f-40c5-99fa-86c5a88d45a4",
+      "MasterProductId": 4705824,
+      "MasterProductName": "Qwest - Qwest",
+      "VariationId": 1,
+      "Slug": "M4705824-V1",
+      "CatalogSku": "KUTL574Q",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Qwest - Strawberry Cough - Sativa 1G",
+      "ShortDescription": "Blend of strawberries and fruit flavours.",
+      "LongDescription": "Typically dense, sativa-dominant hybrid Vision Qwest (Strawberry Cough, a cross between Strawberry Fields and Haze) has a rich and sprawling variety of phenotypes, ranging from noticeably white to dark purple, with sweet and fruity terpenes. Qwest cannabis is small-batch grown, hand-trimmed, and top cut to attain the densest and most robust flower.",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000058",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900041",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "1",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Limonene, Guaiol,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Qwest - Strawberry Cough - Sativa 1G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "6cb64663-4a1f-40c5-99fa-86c5a88d45a4",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:52.36Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:30.4004442Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:33.5605552Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "abf2f596-6436-4df5-acc8-63690d065d81",
+      "MasterProductId": 4705826,
+      "MasterProductName": "Qwest - Zest Qwest",
+      "VariationId": 2,
+      "Slug": "M4705826-V2",
+      "CatalogSku": "0J6K0T7T",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Zest Qwest - Super Lemon Haze - Sativa 3.5G",
+      "ShortDescription": "Aromatic zesty citrus and subtly sweet flavours.",
+      "LongDescription": "Sativa-dominant Super Lemon Haze strain (Zest Qwest), combining  favoured genetics from popular parent strains Lemon Skunk and Super Silver Haze, Super Lemon Haze has a frosty layer of kief bearing a blonde tint. Naturally lanky flowers feature signature aromatics of zesty citrus. Qwest cannabis is small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust buds).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000082",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900355",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "3.5",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "3.5",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Terpinolene, ,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Zest Qwest - Super Lemon Haze - Sativa 3.5G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "abf2f596-6436-4df5-acc8-63690d065d81",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:33.4966667Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:32.728521Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:31.0291947Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "a9a9a298-9710-4435-9f41-7e85393ffcf5",
+      "MasterProductId": 4705823,
+      "MasterProductName": "Qwest - Wonder Qwest",
+      "VariationId": 2,
+      "Slug": "M4705823-V2",
+      "CatalogSku": "JYXBXB5U",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Wonder Qwest - Sour Diesel - Sativa 3.5G",
+      "ShortDescription": "Hint of pine, and sweet and sour undertones.",
+      "LongDescription": "Wonder Qwest (Sour Diesel) has a rare flavour profile that matches its name. Fluffy with resinous white-hued sugar leaves, this Chemdawg91 and Super Skunk cross is truly sour with sweet hints of citrus. Pungent and tart, this is a hearty phenotype that is  small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust flowers).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000041",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900034",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "3.5",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "3.5",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Myrcene, Limonene,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Wonder Qwest - Sour Diesel - Sativa 3.5G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "a9a9a298-9710-4435-9f41-7e85393ffcf5",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:34.7933333Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:33.5410269Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:33.4831269Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "15fb2b4d-0efe-499d-b203-fe2931431fab",
+      "MasterProductId": 4705826,
+      "MasterProductName": "Qwest - Zest Qwest",
+      "VariationId": 3,
+      "Slug": "M4705826-V3",
+      "CatalogSku": "MHXDTXH1",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Zest Qwest - Super Lemon Haze - Sativa 7G",
+      "ShortDescription": "Aromatic zesty citrus and subtly sweet flavours.",
+      "LongDescription": "Sativa-dominant Super Lemon Haze strain (Zest Qwest), combining  favoured genetics from popular parent strains Lemon Skunk and Super Silver Haze, Super Lemon Haze has a frosty layer of kief bearing a blonde tint. Naturally lanky flowers feature signature aromatics of zesty citrus. Qwest cannabis is small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust buds).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1011691",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900157",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "7",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "7",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Terpinolene, ,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Zest Qwest - Super Lemon Haze - Sativa 7G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "15fb2b4d-0efe-499d-b203-fe2931431fab",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:36.48Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:35.8535044Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:48.8309945Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "551d2b60-3073-4701-a945-342c5bb143e4",
+      "MasterProductId": 4705823,
+      "MasterProductName": "Qwest - Wonder Qwest",
+      "VariationId": 3,
+      "Slug": "M4705823-V3",
+      "CatalogSku": "WY6FC15G",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Wonder Qwest - Sour Diesel - Sativa 7G",
+      "ShortDescription": "Hint of pine, and sweet and sour undertones.",
+      "LongDescription": "Wonder Qwest (Sour Diesel, a cross between Chemdawg91 and Super Skunk) has a rare flavour profile that matches its name. Fluffy with resinous white-hued sugar leaves, it is truly sour with sweet hints of citrus. Pungent and tart, this is a hearty phenotype that is small-batch grown, hand-trimmed, and top cut (to attain the densest and most robust flowers).",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1011709",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900133",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "7",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Sativa",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "7",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Myrcene, Limonene,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Sativa",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Wonder Qwest - Sour Diesel - Sativa 7G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "551d2b60-3073-4701-a945-342c5bb143e4",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:46.26Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:36.3534956Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:26.8721354Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    },
+    {
+      "ProductId": "9ea79529-387a-4c5e-b843-f067161b46c5",
+      "MasterProductId": 4705822,
+      "MasterProductName": "Qwest - Escape Qwest",
+      "VariationId": 2,
+      "Slug": "M4705822-V2",
+      "CatalogSku": "DMXQUE5H",
+      "IsArchived": false,
+      "MeasurementType": "SingleUnit",
+      "IsBatchTracked": true,
+      "IsNonStock": false,
+      "LifeCycle": "Active",
+      "ClassificationId": 52433,
+      "ClassificationName": "Flower",
+      "ClassificationPath": "Flower",
+      "Name": "Qwest - Escape Qwest - Death Bubba - Indica 3.5G",
+      "ShortDescription": "Robust and full-bodied musky aroma with earthy terpenes.",
+      "LongDescription": "Qwests Escape Qwest (Death Bubba, a cross between Bubba Kush and Death Star) is cultivated using the mineral rich soils and streams of the Pacific Northwest. A heavy indica, Death Bubba presents a robust flower structure, which yields earthy terpenes of wood and pine. With bright pistils and bulbous trichomes, Death Bubba has a familiar musk reminiscent of other BC-grown favourites.",
+      "HeroShotAssetId": null,
+      "HeroShotUri": null,
+      "SupplierSkus": [
+        {
+          "SKU": "1000025",
+          "SupplierId": 294619,
+          "Supplier": "BCLDB",
+          "Description": ""
+        }
+      ],
+      "ManufacturerSkus": [],
+      "Upcs": [
+        {
+          "UPC": "00628242900010",
+          "Description": ""
+        }
+      ],
+      "ProductSpecifications": [
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35053,
+          "FieldName": "Retail Marijuana Product Type - Canada 293892",
+          "StringId": "Retail Marijuana Product Type - Canada 293892",
+          "DisplayName": "Retail Marijuana Product Type - Canada",
+          "Value": "Flower",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35054,
+          "FieldName": "Equivalent To 293892",
+          "StringId": "Equivalent To 293892",
+          "DisplayName": "Equivalent To",
+          "Value": "3.5",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35055,
+          "FieldName": "Strain 293892",
+          "StringId": "Strain 293892",
+          "DisplayName": "Strain",
+          "Value": "Indica",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35056,
+          "FieldName": "Health Canada Reporting Category 293892",
+          "StringId": "Health Canada Reporting Category 293892",
+          "DisplayName": "Health Canada Reporting Category",
+          "Value": "Dried Cannabis",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "dab87537-1f4c-4158-93ca-73a89b1e4ca3",
+          "FieldGroup": "Details",
+          "FieldId": 35057,
+          "FieldName": "Net Weight 293892",
+          "StringId": "Net Weight 293892",
+          "DisplayName": "Net Weight",
+          "Value": "3.5",
+          "Type": "Float",
+          "Unit": "g"
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35072,
+          "FieldName": "Brands 293892",
+          "StringId": "Brands 293892",
+          "DisplayName": "Brands",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "44aa3185-8311-46ae-9ea6-c9e601f676d0",
+          "FieldGroup": "Additional Details",
+          "FieldId": 35073,
+          "FieldName": "Terpenes 293892",
+          "StringId": "Terpenes 293892",
+          "DisplayName": "Terpenes",
+          "Value": "Caryophyllene, Limonene,",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35058,
+          "FieldName": "Online Menu Category 293892",
+          "StringId": "Online Menu Category 293892",
+          "DisplayName": "Online Menu Category",
+          "Value": "Flower - Indica",
+          "Type": "SingleSelect",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35059,
+          "FieldName": "Online Menu Brand 293892",
+          "StringId": "Online Menu Brand 293892",
+          "DisplayName": "Online Menu Brand",
+          "Value": "QWEST",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        },
+        {
+          "FieldGroupId": "4cf614ba-4879-4980-b2a0-b14cc15b1bd7",
+          "FieldGroup": "Budvue",
+          "FieldId": 35060,
+          "FieldName": "Online Menu Name 293892",
+          "StringId": "Online Menu Name 293892",
+          "DisplayName": "Online Menu Name",
+          "Value": "Qwest - Escape Qwest - Death Bubba - Indica 3.5G",
+          "Type": "TextSingleLine",
+          "Unit": ""
+        }
+      ],
+      "Assets": [],
+      "Availability": [],
+      "Prices": [
+        {
+          "LocationId": 293894,
+          "FromEntityId": 293892,
+          "ProductId": "9ea79529-387a-4c5e-b843-f067161b46c5",
+          "TierId": null,
+          "TierName": null,
+          "TierQuantity": null,
+          "GroupId": null,
+          "GroupName": null,
+          "ShelfId": null,
+          "ShelfName": null,
+          "Price": 1000.0,
+          "AtTierPrice": null,
+          "SalePrices": [],
+          "UpdatedDateUtc": "2022-07-27T22:03:52.7266667Z"
+        }
+      ],
+      "CreatedDateUtc": "2022-07-27T22:03:38.6034935Z",
+      "UpdatedDateUtc": "2024-06-24T17:35:47.9406603Z",
+      "ApplicableTaxRates": [
+        "9c29f5c6-6735-4aff-9867-320e026c66fd",
+        "f24784da-91e0-458a-b8d6-8f5341892128"
+      ],
+      "ClassificationTreeId": 52432,
+      "ManufacturerId": null,
+      "Manufacturer": null,
+      "MSRP": null,
+      "MSRPCurrencyCode": null,
+      "CompanyLevelRegularPrice": {
+        "Price": 1000.0,
+        "SalePrices": []
+      }
+    }
+  ],
+  "Packages": [],
+  "TaxRates": [
+    {
+      "Id": "9c29f5c6-6735-4aff-9867-320e026c66fd",
+      "Name": "GST",
+      "DisplayName": null,
+      "Type": "Percentage",
+      "Rate": 0.05,
+      "Layer": 0,
+      "CalculatedOn": "SoldAtPrice",
+      "Locations": [
+        293894
+      ]
+    },
+    {
+      "Id": "f24784da-91e0-458a-b8d6-8f5341892128",
+      "Name": "PST",
+      "DisplayName": "",
+      "Type": "Percentage",
+      "Rate": 0.07,
+      "Layer": 0,
+      "CalculatedOn": "SoldAtPrice",
+      "Locations": [
+        293894
+      ]
+    }
+  ],
+  "Classifications": [
+    {
+      "TreeId": 52432,
+      "Id": 52433,
+      "Name": "Flower",
+      "ParentCategories": []
+    }
+  ]
+}
