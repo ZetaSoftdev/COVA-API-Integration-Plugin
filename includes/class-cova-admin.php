@@ -752,22 +752,37 @@ class Cova_Admin {
      */
     private function extract_image_urls_from_product($product_data) {
         $image_urls = array();
-        
-        // Get HeroShotUri if available
+
+        // 1. Hero image if available
         if (!empty($product_data['HeroShotUri'])) {
             $image_urls[] = $product_data['HeroShotUri'];
+        } elseif (!empty($product_data['HeroShotUrl'])) {
+            $image_urls[] = $product_data['HeroShotUrl'];
         }
-        
-        // Get image URLs from Assets
+
+        // 2. Asset images
         if (!empty($product_data['Assets']) && is_array($product_data['Assets'])) {
             foreach ($product_data['Assets'] as $asset) {
-                if (isset($asset['Type']) && $asset['Type'] === 'Image' && !empty($asset['Url'])) {
-                    $image_urls[] = $asset['Url'];
+                $asset_type = isset($asset['Type']) ? strtolower($asset['Type']) : '';
+                if (strpos($asset_type, 'image') !== false) {
+                    $url = '';
+                    if (!empty($asset['Uri'])) {
+                        $url = $asset['Uri'];
+                    } elseif (!empty($asset['Url'])) {
+                        $url = $asset['Url'];
+                    }
+
+                    if (!empty($url)) {
+                        $image_urls[] = $url;
+                        if (count($image_urls) >= 3) {
+                            break; // Limit to first 3 images
+                        }
+                    }
                 }
             }
         }
-        
-        return $image_urls;
+
+        return array_slice($image_urls, 0, 3); // Ensure only three images max
     }
 
     /**
@@ -1058,52 +1073,47 @@ class Cova_Admin {
                                         <?php endif; ?>
                                     </td>
                                     <td class="image-urls-column">
-                                        <?php if (!empty($image_urls)) : ?>
-                                            <div class="image-urls-container">
-                                                <?php foreach ($image_urls as $index => $url) : 
-                                                    $is_igmetrix = (strpos($url, 'igmetrix.net') !== false);
-                                                    $url_class = $is_igmetrix ? 'igmetrix-url' : 'regular-url';
-                                                ?>
-                                                    <div class="image-url-item <?php echo $url_class; ?>">
-                                                        <span class="url-label">
-                                                            <?php echo $index === 0 ? 'Hero:' : 'Asset ' . $index . ':'; ?>
-                                                        </span>
+                                        <div class="image-urls-container">
+                                            <?php for ($i = 0; $i < 3; $i++) :
+                                                $url = isset($image_urls[$i]) ? $image_urls[$i] : '';
+                                                $is_igmetrix = $url && (strpos($url, 'igmetrix.net') !== false);
+                                                $url_class = $is_igmetrix ? 'igmetrix-url' : 'regular-url';
+                                            ?>
+                                                <div class="image-url-item <?php echo $url_class; ?>">
+                                                    <span class="url-label">Image <?php echo $i + 1; ?>:</span>
+                                                    <?php if ($url) : ?>
                                                         <a href="<?php echo esc_url($url); ?>" target="_blank" class="image-url-link">
                                                             <?php echo esc_html(substr($url, 0, 50)) . (strlen($url) > 50 ? '...' : ''); ?>
                                                         </a>
                                                         <?php if ($is_igmetrix) : ?>
                                                             <span class="igmetrix-warning" title="This igmetrix.net URL typically returns 500 errors">⚠️</span>
                                                         <?php endif; ?>
-                                                        <button type="button" class="button button-small copy-url-btn" 
-                                                            data-url="<?php echo esc_attr($url); ?>" 
-                                                            title="Copy URL to clipboard">
-                                                            📋
-                                                        </button>
-                                                    </div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        <?php else : ?>
-                                            <span class="na"><?php _e('No URLs', 'cova-integration'); ?></span>
-                                        <?php endif; ?>
+                                                        <button type="button" class="button button-small copy-url-btn" data-url="<?php echo esc_attr($url); ?>" title="Copy URL to clipboard">📋</button>
+                                                    <?php else : ?>
+                                                        <span class="na"><?php _e('Not available', 'cova-integration'); ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endfor; ?>
+                                        </div>
                                     </td>
                                     <td class="redirected-urls-column">
-                                        <?php if (!empty($image_urls)) : ?>
-                                            <div class="final-urls-container">
-                                                <?php foreach ($image_urls as $index => $url) : 
-                                                    $label = $index === 0 ? 'Hero' : 'Asset ' . $index;
-                                                    $final_url = $this->get_final_url($url);
-                                                ?>
-                                                    <div class="final-url-item">
-                                                        <span class="url-label"><?php echo esc_html($label); ?>:</span>
+                                        <div class="final-urls-container">
+                                            <?php for ($i = 0; $i < 3; $i++) :
+                                                $url = isset($image_urls[$i]) ? $image_urls[$i] : '';
+                                            ?>
+                                                <div class="final-url-item">
+                                                    <span class="url-label">Image <?php echo $i + 1; ?>:</span>
+                                                    <?php if ($url) : ?>
+                                                        <?php $final_url = $this->get_final_url($url); ?>
                                                         <a href="<?php echo esc_url($final_url); ?>" target="_blank" class="final-url-link">
                                                             <?php echo esc_html($final_url); ?>
                                                         </a>
-                                                    </div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        <?php else : ?>
-                                            <span class="na"><?php _e('No URLs', 'cova-integration'); ?></span>
-                                        <?php endif; ?>
+                                                    <?php else : ?>
+                                                        <span class="na"><?php _e('Not available', 'cova-integration'); ?></span>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endfor; ?>
+                                        </div>
                                     </td>
                                     <td>
                                         <?php if ($is_in_stock) : ?>
